@@ -3,175 +3,674 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Live Tiles</title>
+    <title>Seattle University</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
     <style>
       :root {
-        --page-width: 1200px;
-        --top: #0b6d96;
-        --mid: #8ea8da;
-        --bottom: #0a79c7;
-        --gap: 6px;
-        --tile-h: 84px;
+        --page-bg: #d8d0c3;
+        --panel-bg: #f3eee6;
+        --red: #9f0014;
+        --dark: #4a403c;
+        --brown: #6c5f57;
+        --text: #312924;
+        --line: #cdbfb3;
+        --site-w: 1120px;
+        --content-w: 560px;
+        --hero-w: 560px;
       }
+
       * {
         box-sizing: border-box;
       }
+
       body {
         margin: 0;
-        background: #fff;
-        font-family: Arial, Helvetica, sans-serif;
-        min-width: 1200px;
+        background: var(--page-bg);
+        color: var(--text);
+        font-family: Georgia, "Times New Roman", serif;
+        min-width: 1120px;
       }
-      .wrap {
-        width: var(--page-width);
-        margin: 0 auto;
-        padding-top: 2px;
+
+      a {
+        text-decoration: none;
+        color: inherit;
       }
-      .header {
-        display: grid;
-        grid-template-columns: 1fr 180px;
-        min-height: 114px;
-        background: var(--top);
+
+      .site-wrap {
+        width: var(--site-w);
+        margin: 4px auto;
+        border: 1px solid #bcb2a8;
+        background: var(--page-bg);
       }
-      .title {
-        display: flex;
-        align-items: center;
-        padding: 18px 26px;
+
+      /* HEADER */
+      .top-header {
+        background: url("assets/headerBackground.jpg") center center / cover
+          no-repeat;
+        height: 52px;
+        padding: 0 270px 0 270px;
         color: #fff;
       }
-      .title h1 {
+
+      .site-title {
+        font-size: 20px;
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: 0.5px;
         margin: 0;
-        font-size: 44px;
-        line-height: 1.08;
-        font-weight: 300;
-        text-transform: uppercase;
+        white-space: nowrap;
       }
-      .thumb {
-        background: #f2f2f2;
+
+      .tiny-links {
+        font:
+          700 7px/1 Arial,
+          Helvetica,
+          sans-serif;
+        color: #fff;
+        white-space: nowrap;
+      }
+
+      .tiny-links a {
+        margin-left: 6px;
+        color: #fff;
+      }
+
+      .search-mini {
+        width: 120px;
+        height: 13px;
+        border: 1px solid #b8afa7;
+        padding: 0 4px;
+        font:
+          7px Arial,
+          Helvetica,
+          sans-serif;
+        outline: none;
+      }
+
+      .btn-mini {
+        height: 13px;
+        padding: 0 5px;
+        border: 1px solid #6d655f;
+        background: #f3eee6;
+        font:
+          7px Arial,
+          Helvetica,
+          sans-serif;
+        line-height: 11px;
+      }
+
+      .main-menu {
+        background: url("assets/headerBackground.jpg") center center / cover
+          no-repeat;
+        height: 20px;
+        padding: 0 270px;
+      }
+
+      .main-menu a {
+        color: #fff;
+        text-transform: uppercase;
+        font:
+          700 7px/1 Arial,
+          Helvetica,
+          sans-serif;
+        white-space: nowrap;
+      }
+
+      /* HERO */
+      .hero-band {
+        height: 133px;
+        background: var(--dark);
+      }
+
+      .hero-main {
+        width: var(--hero-w);
+        height: 133px;
+        margin: 0 auto;
+        position: relative;
+        background: url("assets/homepageCenterpieceTemplate_STM-final.jpeg")
+          center center / cover no-repeat;
+      }
+
+      .hero-dots {
+        position: absolute;
+        right: 6px;
+        bottom: 4px;
+        display: flex;
+        gap: 2px;
+      }
+
+      .hero-dots span {
+        width: 10px;
+        height: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(100, 100, 100, 0.5);
+        color: #fff;
+        font:
+          7px/1 Arial,
+          Helvetica,
+          sans-serif;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-left: 1px solid rgba(0, 0, 0, 0.08);
       }
-      .thumb img {
-        max-width: 100%;
+
+      .hero-dots .active {
+        background: var(--red);
+      }
+
+      /* MAIN PANEL */
+      .content-panel {
+        width: var(--content-w);
+        margin: 10px auto 0;
+        background: var(--panel-bg);
+        border: 1px solid #d3c8bc;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+        padding: 8px 8px 0;
+      }
+
+      .audience-card {
+        min-height: 122px;
+        background: url("assets/home_audienceNavigation_Background.jpg") center
+          center / cover no-repeat;
+        border: 1px solid #c6b9aa;
+        overflow: hidden;
+      }
+
+      .audience-title {
+        height: 18px;
+        line-height: 18px;
+        padding: 0 10px;
+        background: var(--red);
+        color: #fff;
+        position: relative;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .audience-title::after {
+        content: "";
+        position: absolute;
+        right: -10px;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+        border-left: 10px solid var(--red);
+      }
+
+      .audience-list {
+        list-style: none;
+        margin: 10px 0 0;
+        padding: 0 10px;
+      }
+
+      .audience-list li {
+        color: #f2e7db;
+        font-size: 8px;
+        font-weight: 700;
+        line-height: 1.05;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+      }
+
+      .mini-card {
+        min-height: 122px;
+        background: #f4efe7;
+        border: 1px solid #c7bbad;
+      }
+
+      .mini-title {
+        height: 18px;
+        line-height: 18px;
+        padding: 0 8px;
+        color: #fff;
+        background: linear-gradient(#7d7067, #5f544d);
+        border-bottom: 1px solid #b8aca0;
+        font-size: 9px;
+        font-weight: 700;
+      }
+
+      .mini-body {
+        padding: 5px 6px;
+        color: #332b27;
+        font:
+          7px/1.2 Arial,
+          Helvetica,
+          sans-serif;
+      }
+
+      .mini-body img {
+        width: 100%;
+        height: 48px;
+        object-fit: cover;
+        display: block;
+        margin-bottom: 4px;
+        border: 1px solid #c4b7a9;
+      }
+
+      .mini-body ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .mini-body li {
+        margin-bottom: 3px;
+      }
+
+      .mini-body strong {
+        display: block;
+        font-size: 7px;
+      }
+
+      .mini-body a {
+        color: #683226;
+      }
+
+      /* ABOUT */
+      .about-box {
+        margin-top: 10px;
+        height: 124px;
+        background: url("assets/home-audienceAndBoilerplateBackground.jpg")
+          right bottom / cover no-repeat;
+        border-top: 1px solid #e1d8cc;
+        overflow: hidden;
+      }
+
+      .about-left {
+        padding: 12px 0 0 0;
+      }
+
+      .about-left h2 {
+        margin: 0 0 8px;
+        color: #50392f;
+        font-size: 14px;
+        line-height: 1.05;
+        font-weight: 400;
+      }
+
+      .about-left p {
+        max-width: 280px;
+        margin: 0 0 7px;
+        color: #302824;
+        font:
+          7px/1.45 Arial,
+          Helvetica,
+          sans-serif;
+      }
+
+      .about-left a {
+        color: #9b0012;
+        text-decoration: underline;
+      }
+
+      .about-right {
+        height: 124px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .about-right img {
+        width: 88px;
+        height: auto;
         display: block;
       }
-      .band-top {
-        height: 58px;
-        background: var(--mid);
-        border-top: 4px solid #fff;
-        border-bottom: 4px solid #fff;
+
+      /* FOOTER */
+      .footer-top {
+        margin-top: 12px;
+        background: url("assets/headerBackground.jpg") center center / cover
+          no-repeat;
+        min-height: 160px;
+        padding: 8px 270px 24px;
+        color: #fff;
       }
-      .tiles {
-        background: var(--mid);
-        padding-bottom: 4px;
+
+      .footer-top h4 {
+        margin: 0 0 4px;
+        color: #fff;
+        font-size: 9px;
+        line-height: 1;
+        font-weight: 700;
       }
-      .row-tiles {
-        display: grid;
-        gap: var(--gap);
-        margin-bottom: var(--gap);
+
+      .footer-top ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
       }
-      .row-tiles:last-child {
-        margin-bottom: 0;
+
+      .footer-top li {
+        margin-bottom: 2px;
+        color: #fff;
+        font:
+          6px/1.2 Arial,
+          Helvetica,
+          sans-serif;
+        word-break: break-word;
       }
-      .r1 {
-        grid-template-columns: 1fr 1fr 2.25fr 1.15fr 1.15fr;
+
+      .footer-bottom {
+        background: url("assets/footerBackground.png") center center / cover
+          no-repeat;
+        min-height: 56px;
+        margin-top: -10px;
+        padding: 0 270px;
+        display: flex;
+        align-items: flex-end;
       }
-      .r2 {
-        grid-template-columns: 1fr 1fr 1.15fr 1.15fr 2.3fr;
+
+      .footer-address {
+        color: #fff;
+        font:
+          7px/1.25 Arial,
+          Helvetica,
+          sans-serif;
+        padding-bottom: 8px;
       }
-      .r3 {
-        grid-template-columns: 1fr 1fr 2.25fr 1.15fr 1.15fr;
+
+      .footer-seal {
+        width: 46px;
+        display: block;
+        margin: 0 auto 2px;
       }
-      .tile {
-        height: var(--tile-h);
-        border: 1px solid rgba(255, 255, 255, 0.8);
+
+      .footer-strip {
+        height: 8px;
+        background: url("assets/footerCopyrightAndLinksBackground.png") center
+          center / cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 270px;
+        color: #4a3f39;
+        font:
+          6px Arial,
+          Helvetica,
+          sans-serif;
       }
-      .lime {
-        background: #b7e93d;
-      }
-      .sky {
-        background: #48ade0;
-      }
-      .lav {
-        background: #8aa4d7;
-      }
-      .purple {
-        background: #7938ab;
-      }
-      .blue {
-        background: #2c8bc7;
-      }
-      .green {
-        background: #06b74d;
-      }
-      .red {
-        background: #d80000;
-      }
-      .yellow {
-        background: #f5c000;
-      }
-      .yellowgreen {
-        background: #a5cf24;
-      }
-      .sand {
-        background: #f0c768;
-      }
-      .gray {
-        background: #9a9a9a;
-      }
-      .navy {
-        background: #00557f;
-      }
-      .cyan {
-        background: #79bdd8;
-      }
-      .teal {
-        background: #2c7b95;
-      }
-      .band-bottom {
-        height: 58px;
-        background: var(--bottom);
-        border-top: 4px solid #fff;
+
+      .footer-copy {
+        height: 8px;
+        background: url("assets/footerCopyrightAndLinksBackground.png") center
+          center / cover no-repeat;
+        text-align: center;
+        line-height: 8px;
+        color: #4a3f39;
+        font:
+          6px Arial,
+          Helvetica,
+          sans-serif;
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <section class="header">
-        <div class="title"><h1>Chia bố cục theo phong cách live tiles</h1></div>
-        <div class="thumb"><img src="assets/__utm.gif" alt="WWW" /></div>
+    <div class="site-wrap">
+      <!-- HEADER TOP -->
+      <header class="top-header">
+        <div class="d-flex justify-content-between align-items-start pt-2">
+          <h1 class="site-title">SEATTLE UNIVERSITY</h1>
+
+          <div class="text-end">
+            <div class="tiny-links mb-1">
+              <a href="#">Email</a>
+              <a href="#">MySU</a>
+              <a href="#">Angel</a>
+              <a href="#">SU Online</a>
+              <a href="#">Directory</a>
+              <a href="#">Campus Map</a>
+            </div>
+
+            <div class="d-flex justify-content-end align-items-center gap-1">
+              <input
+                type="text"
+                class="search-mini"
+                placeholder="Search Seattle University"
+              />
+              <button class="btn-mini" type="button">Search</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- MAIN NAV -->
+      <nav class="main-menu d-flex align-items-center gap-4">
+        <a href="#">About</a>
+        <a href="#">Admissions</a>
+        <a href="#">Academics</a>
+        <a href="#">Student Life</a>
+        <a href="#">Jesuit Tradition</a>
+        <a href="#">Athletics</a>
+        <a href="#">Faculty and Staff</a>
+        <a href="#">Give</a>
+      </nav>
+
+      <!-- HERO -->
+      <section class="hero-band">
+        <div class="hero-main">
+          <div class="hero-dots">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span class="active">4</span>
+          </div>
+        </div>
       </section>
-      <div class="band-top"></div>
-      <section class="tiles">
-        <div class="row-tiles r1">
-          <div class="tile lime"></div>
-          <div class="tile sky"></div>
-          <div class="tile lav"></div>
-          <div class="tile purple"></div>
-          <div class="tile blue"></div>
+
+      <!-- CONTENT -->
+      <main>
+        <div class="content-panel">
+          <section class="row g-2">
+            <div class="col-3">
+              <div class="audience-card">
+                <div class="audience-title">Future Students</div>
+                <ul class="audience-list">
+                  <li>Current Students</li>
+                  <li>Parents &amp;<br />Families</li>
+                  <li>Alumni &amp;<br />Friends</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="mini-card">
+                <div class="mini-title">New SU students</div>
+                <div class="mini-body">
+                  <img src="assets/students.jpg" alt="Students" />
+                  Select your housing, registration and orientation preference
+                  for fall term here.
+                  <br /><a href="#">Learn More »</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="mini-card">
+                <div class="mini-title">Upcoming Events</div>
+                <div class="mini-body">
+                  <ul>
+                    <li>
+                      <strong>A Roll of the Dice Workshop</strong>
+                      Information literacy and practice to help you get engaged.
+                    </li>
+                    <li>
+                      <strong>Graduated</strong>
+                      Saturday, May 18 at 12:00 PM
+                    </li>
+                    <li>
+                      <strong>Cap Hill Soccer Jam</strong>
+                      Saturday, May 25 all day
+                    </li>
+                    <li><a href="#">Campus Calendar »</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="mini-card">
+                <div class="mini-title">Apply To SU</div>
+                <div class="mini-body">
+                  <ul>
+                    <li><a href="#">Request Information</a></li>
+                    <li><a href="#">Apply Now</a></li>
+                    <li><a href="#">Visit Seattle University</a></li>
+                    <li><a href="#">Meet Your Admissions Counselor</a></li>
+                    <li><a href="#">International Students</a></li>
+                    <li><a href="#">Accepted Students</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="about-box">
+            <div class="row g-0">
+              <div class="col-9">
+                <div class="about-left">
+                  <h2>About Seattle University</h2>
+                  <p>
+                    Seattle University, founded in 1891, is a Jesuit Catholic
+                    university located on 50 acres in Seattle's Capitol Hill
+                    neighborhood. 7,500 students are enrolled in undergraduate
+                    and graduate programs at eight schools and colleges.
+                  </p>
+                  <p>
+                    In U.S. News &amp; World Report's College 2013, Seattle
+                    University has held a top ranking among regional
+                    universities in the West. The university has held a spot in
+                    the top 10 for more than a decade.
+                    <a href="#">See the full ranking</a>.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-3">
+                <div class="about-right">
+                  <img
+                    src="assets/homepage-USNWR2013.png"
+                    alt="Best Colleges"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-        <div class="row-tiles r2">
-          <div class="tile green"></div>
-          <div class="tile lav"></div>
-          <div class="tile red"></div>
-          <div class="tile yellow"></div>
-          <div class="tile yellowgreen"></div>
+      </main>
+
+      <!-- FOOTER -->
+      <footer>
+        <div class="footer-top">
+          <div class="row g-4">
+            <div class="col">
+              <h4>Admissions</h4>
+              <ul>
+                <li>Apply Now</li>
+                <li>Undergraduate Admission</li>
+                <li>Graduate Admission</li>
+                <li>School of Law Admission</li>
+                <li>Core Curriculum</li>
+                <li>Tuition and Fees</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <h4>About SU</h4>
+              <ul>
+                <li>About Seattle University</li>
+                <li>Seattle University Facts</li>
+                <li>News</li>
+                <li>History</li>
+                <li>Youth Initiative</li>
+                <li>Global Learning</li>
+                <li>How to Give</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <h4>Academics</h4>
+              <ul>
+                <li>Undergraduate Programs and Majors</li>
+                <li>Graduate Programs</li>
+                <li>School of Law</li>
+                <li>Academic Calendar</li>
+                <li>Course Catalog</li>
+                <li>Academic Affairs</li>
+                <li>Lemieux Library and McGoldrick Learning Commons</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <h4>Campus</h4>
+              <ul>
+                <li>Emergency Text Message</li>
+                <li>Centers and Institutes</li>
+                <li>Sustainability</li>
+                <li>Campus Improvement Project</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <h4>Jesuit Tradition</h4>
+              <ul>
+                <li>Jesuit Tradition</li>
+                <li>Mission, Vision and Values</li>
+                <li>Campus Ministry</li>
+                <li>Mission and Ministry</li>
+                <li>Magis: Alumni Committed for Mission</li>
+                <li>All Things Jesuit</li>
+              </ul>
+            </div>
+
+            <div class="col">
+              <h4>Schools and Colleges</h4>
+              <ul>
+                <li>Albers School of Business and Economics</li>
+                <li>College of Arts and Sciences</li>
+                <li>College of Education</li>
+                <li>College of Nursing</li>
+                <li>College of Science and Engineering</li>
+                <li>School of Law</li>
+                <li>School of Theology and Ministry</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="row-tiles r3">
-          <div class="tile sand"></div>
-          <div class="tile gray"></div>
-          <div class="tile navy"></div>
-          <div class="tile cyan"></div>
-          <div class="tile teal"></div>
+
+        <div class="footer-bottom">
+          <div class="row w-100 align-items-end">
+            <div class="col-4">
+              <div class="footer-address">
+                Seattle University<br />
+                901 12th Avenue<br />
+                Seattle, WA 98122<br />
+                Phone: 1-206-296-6000<br />
+                Download vCard
+              </div>
+            </div>
+
+            <div class="col-4 text-center">
+              <img
+                src="assets/footer-seal.png"
+                alt="Seal"
+                class="footer-seal"
+              />
+            </div>
+
+            <div class="col-4"></div>
+          </div>
         </div>
-      </section>
-      <div class="band-bottom"></div>
+
+        <div class="footer-strip">Site Index | Ethics Line</div>
+        <div class="footer-copy">© 2013 Seattle University</div>
+      </footer>
     </div>
   </body>
 </html>
